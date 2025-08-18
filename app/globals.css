@@ -154,16 +154,16 @@
 
 /* Sizing */
 @theme {
-  --size-0: 0rem; /* 0px */
-  --size-25: 0.125rem; /* 2px */
-  --size-50: 0.25rem; /* 4px */
-  --size-100: 0.5rem; /* 8px */
-  --size-150: 0.75rem; /* 12px */
-  --size-200: 1rem; /* 16px */
-  --size-300: 1.5rem; /* 24px */
-  --size-600: 3rem; /* 48px */
-  --size-800: 4rem; /* 64px */
-  --size-1200: 6rem; /* 96px */
+  --spacing-0: 0rem; /* 0px */
+  --spacing-25: 0.125rem; /* 2px */
+  --spacing-50: 0.25rem; /* 4px */
+  --spacing-100: 0.5rem; /* 8px */
+  --spacing-150: 0.75rem; /* 12px */
+  --spacing-200: 1rem; /* 16px */
+  --spacing-300: 1.5rem; /* 24px */
+  --spacing-600: 3rem; /* 48px */
+  --spacing-800: 4rem; /* 64px */
+  --spacing-1200: 6rem; /* 96px */
 }
 
 /* Typography */
