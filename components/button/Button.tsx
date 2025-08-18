@@ -9,16 +9,16 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-primary-400 text-white hover:bg-primary-500 focus:bg-primary-600 focus-visible:bg-primary-600 disabled:bg-primary-200 disabled:text-white",
+          "bg-blue-400 text-white hover:bg-blue-500 focus:bg-blue-600 focus-visible:bg-blue-600 disabled:bg-blue-200 disabled:text-white disabled:hover:bg-blue-200",
         secondary:
-          "bg-secondary-100 text-secondary-600 hover:bg-secondary-300 focus:bg-secondary-400 focus-visible:bg-secondary-400 disabled:bg-secondary-50 disabled:text-secondary-300",
-        tertiary:
+          "bg-red-500 text-white hover:bg-red-600 focus:bg-red-700 focus-visible:bg-red-700 disabled:bg-red-400 disabled:text-white disabled:hover:bg-red-500",
+        destructive:
           "border border-primary-500 text-primary-500 bg-transparent hover:bg-primary-50 focus:bg-primary-100 focus-visible:bg-primary-100 disabled:border-primary-100 disabled:text-primary-200 disabled:bg-transparent",
       },
       size: {
         sm: "text-sm py-1 px-2",
-        md: "text-base py-2 px-4",
-        lg: "text-lg py-3 px-6",
+        md: "text-base py-2 px-6",
+        lg: "text-lg py-3 px-8",
       },
     },
     defaultVariants: {
