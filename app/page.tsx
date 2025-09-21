@@ -1,8 +1,9 @@
 "use client"
 import { DropdownItem, DropdownOption } from "@/components/DropdownItem"
+import { SubHeader } from "@/components/DropdownItem/SubHeader"
 import { DropdownList } from "@/components/DropdownList"
 import { ChevronDown } from "lucide-react"
-import Select, { components } from "react-select"
+import Select, { components, PlaceholderProps } from "react-select"
 
 const options: DropdownOption[] = [
   {
@@ -15,10 +16,10 @@ const options: DropdownOption[] = [
     icon: <span>🍌</span>,
   },
   { value: "carrot", label: "Carrot", supportText: "Crunchy and healthy" },
-  { value: "carrot", label: "Carrot" },
-  { value: "carrot", label: "Carrot" },
-  { value: "carrot", label: "Carrot" },
-  { value: "carrot", label: "Carrot" },
+  { value: "broccoli", label: "Broccoli" },
+  { value: "grape", label: "Grape" },
+  { value: "orange", label: "Orange" },
+  { value: "strawberry", label: "Strawberry" },
 ]
 
 const checkboxOptions: DropdownOption[] = [
@@ -32,6 +33,7 @@ const checkboxOptions: DropdownOption[] = [
   },
   { value: "carrot", label: "Carrot", supportText: "Crunchy and healthy" },
 ]
+
 const groupedOptions = [
   {
     label: "Fruits",
@@ -40,7 +42,6 @@ const groupedOptions = [
         value: "apple",
         label: "Apple",
         icon: <span>🍏</span>,
-        supportText: "Fresh and crispy",
       },
       { value: "banana", label: "Banana", icon: <span>🍌</span> },
     ],
@@ -50,9 +51,16 @@ const groupedOptions = [
     options: [
       { value: "carrot", label: "Carrot" },
       { value: "broccoli", label: "Broccoli" },
+      { value: "spinach", label: "Spinach" },
+      { value: "kale", label: "Kale" },
+      { value: "lettuce", label: "Lettuce" },
     ],
   },
 ]
+
+const Placeholder = (props: PlaceholderProps) => {
+  return <components.Placeholder {...props} />
+}
 
 export default function Demo() {
   return (
@@ -121,21 +129,57 @@ export default function Demo() {
       />
       <p>With checkbox</p>
       <Select
-        options={checkboxOptions}
-        isMulti={false}
+        styles={{
+          valueContainer: (base) => ({
+            ...base,
+            padding: 5,
+            borderRadius: 4,
+            paddingBlock: 10,
+            paddingInline: 16,
+          }),
+          input: (base) => ({
+            ...base,
+            margin: 0,
+            padding: 0,
+            paddingBlock: 0,
+            paddingInline: 0,
+          }),
+          control: (base, state) => ({
+            ...base,
+            borderColor: state.isFocused ? "#0077C8" : "#DDD",
+            "&:hover": {},
+            borderRadius: 4,
+            "&:focus": {
+              outline: 4,
+              outlineOffset: 4,
+              outlineColor: "#FBE122",
+            },
+          }),
+        }}
+        noOptionsMessage={() => "No options message"}
+        options={groupedOptions}
+        isMulti={true}
         components={{
-          Option: (props) => (
-            <DropdownItem
-              {...props}
-              itemType='checkbox+text'
-              className='p-0!'
-              isCompact
-            />
-          ),
+          Option: (props) => {
+            // Check if this is a group header (has options array) or an actual option (has value)
+            const hasValue = "value" in props.data
+            if (!hasValue) {
+              return <components.Option {...props} />
+            }
+            return (
+              <DropdownItem
+                {...(props as any)}
+                itemType='checkbox+text'
+                className='p-0!'
+              />
+            )
+          },
           MenuList: (props) => (
             <DropdownList {...props} className='px-0! py-2' />
           ),
-          Menu: (props) => <components.Menu {...props} />,
+          Menu: (props) => (
+            <components.Menu {...props} className='shadow-300' />
+          ),
           DownChevron: (props) => {
             return (
               <components.DownChevron {...props}>
@@ -146,9 +190,10 @@ export default function Demo() {
           CrossIcon: (props) => {
             return <components.CrossIcon {...props}></components.CrossIcon>
           },
+          GroupHeading: SubHeader,
           IndicatorSeparator: () => null,
         }}
-        classNamePrefix='react-select'
+        classNamePrefix='cebu-select'
         isClearable={false}
       />
       {/* <Select

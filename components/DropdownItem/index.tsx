@@ -62,9 +62,13 @@ export const DropdownItem = (props: DropdownItemProps) => {
           </span>
         )}
 
-        <span>{children}</span>
+        <div className='flex flex-col'>
+          {children}
+          {supportText && (
+            <p className='text-gray-500 text-xs'>{supportText}</p>
+          )}
+        </div>
       </div>
-      {supportText && <p className='text-gray-500 text-xs'>{supportText}</p>}
     </components.Option>
   )
 }

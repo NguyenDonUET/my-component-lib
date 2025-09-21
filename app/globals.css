@@ -241,6 +241,7 @@
   --shadow-100: 0px 8px 16px 0px rgba(0, 0, 0, 0.8);
   --shadow-200: 0px 0px 24px 0px rgba(0, 0, 0, 0.12);
 
+  --shadow-300: 0 8px 16px 0 rgba(0, 0, 0, 0.08);
   --shadow-default: var(--shadow-0);
   --shadow-popover: var(--shadow-100);
   --shadow-card: var(--shadow-200);
